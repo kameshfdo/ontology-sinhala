@@ -54,4 +54,7 @@ class OntologyManager:
         return individual
 
     def save(self, fmt: str = "rdfxml"):
-        self.ontology.save(file=self.path, format=fmt)
+    # Ensure the path is passed as a string to avoid issues with PosixPath
+        self.ontology.save(file=str(self.path), format=fmt)
+
+

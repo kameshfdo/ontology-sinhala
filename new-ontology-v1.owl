@@ -1,0 +1,724 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#"
+     xml:base="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1"
+     xmlns:g="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#containsStatement -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#containsStatement">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Statement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasActionVerb -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasActionVerb">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsVerb"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCategory -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCategory">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsArticle"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsCategory"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCourtCase -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCourtCase">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCourtLocation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCourtLocation">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCricketPlayer -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCricketPlayer">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCricketTeam -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCricketTeam">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Organization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCricketTournament -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCricketTournament">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCricketVenue -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCricketVenue">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCrimeLocation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCrimeLocation">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCrimeType -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCrimeType">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasFilmDirectorActor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasFilmDirectorActor">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasFilmProductionCompany -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasFilmProductionCompany">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Organization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasFootballPlayer -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasFootballPlayer">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasFootballTeam -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasFootballTeam">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Organization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasFootballTournament -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasFootballTournament">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasFootballVenue -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasFootballVenue">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasForeignCountry -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasForeignCountry">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsArticle"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasInvestigation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasInvestigation">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Organization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasMusicArtist -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasMusicArtist">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasMusicCompany -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasMusicCompany">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Organization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasMusicEvent -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasMusicEvent">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasMusicLocation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasMusicLocation">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasPlayer -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasPlayer">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasPositionOfRole -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasPositionOfRole">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsArticle"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasResearchEvent -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasResearchEvent">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasResearchInstitution -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasResearchInstitution">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Organization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasResearchLocation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasResearchLocation">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasResearchPerson -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasResearchPerson">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasSrilanka -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasSrilanka">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsArticle"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasStatementObjectEntity -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasStatementObjectEntity">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NamedEntity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasStatementSubject -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasStatementSubject">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NamedEntity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasSubject -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasSubject">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NamedEntity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasTeam -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasTeam">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Organization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasTechCompany -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasTechCompany">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Organization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasTechEvent -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasTechEvent">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasTechPerson -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasTechPerson">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasTournament -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasTournament">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasVenue -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasVenue">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasWitness -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasWitness">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#mentionsEntity -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#mentionsEntity">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NamedEntity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#alias -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#alias">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#canonicalName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#canonicalName">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCourtCase -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCourtCase"/>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCourtLocation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCourtLocation"/>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCricketTournament -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCricketTournament"/>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCrimeType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasCrimeType"/>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasFootballTournament -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasFootballTournament"/>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasFullText -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasFullText">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasPredicateVerb -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasPredicateVerb">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasPublicationDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasPublicationDate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasSourceURL -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasSourceURL">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasStatementObjectLiteral -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasStatementObjectLiteral">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasTitle -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasTitle">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasTournament -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#hasTournament"/>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#processedDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#processedDate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#publisherName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#publisherName">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#sourceSentence -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#sourceSentence">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#CourtsAndInvestigation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#CourtsAndInvestigation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#CrimeAndJustice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Cricket -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Cricket">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Sports"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#CrimeAndJustice -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#CrimeAndJustice">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#CrimeReport -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#CrimeReport">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#CrimeAndJustice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#CultureAndEntertainment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#CultureAndEntertainment">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#DomesticPolitics -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#DomesticPolitics">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#PoliticsAndGovernance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Event -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Event">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NamedEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Football -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Football">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Sports"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#InternationalPolitics -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#InternationalPolitics">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#PoliticsAndGovernance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Location -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Location">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NamedEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#MusicAndArts -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#MusicAndArts">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#CultureAndEntertainment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NamedEntity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NamedEntity">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsArticle -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsArticle">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsCategory -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsCategory">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsOccurDuration -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsOccurDuration">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsVerb -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsVerb">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Organization -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Organization">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NamedEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Other -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Other">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Sports"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Person -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Person">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NamedEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#PoliticsAndGovernance -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#PoliticsAndGovernance">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#ResearchAndSpace -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#ResearchAndSpace">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#ScienceAndTechnology"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#ScienceAndTechnology -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#ScienceAndTechnology">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#ScreenAndStage -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#ScreenAndStage">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#CultureAndEntertainment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Sports -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Sports">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#NewsCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Statement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#Statement">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#TechAndInnovation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#TechAndInnovation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#ScienceAndTechnology"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

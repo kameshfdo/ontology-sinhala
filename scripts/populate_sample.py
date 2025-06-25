@@ -1,24 +1,44 @@
-"""
-Example CLI script that lives outside the package.
-Run with:  python -m scripts.populate_sample
-"""
-from datetime import datetime
-from models import FormattedNewsArticle
-from manager import OntologyManager
+import json
+from ontology_sinhala.manager import OntologyManager
+from ontology_sinhala.ontology_populator import populate_article_from_json
 
 if __name__ == "__main__":
     manager = OntologyManager()
-    manager.add_article(
-        FormattedNewsArticle(
-            headline="ඊශ්‍රායලය සහ ඉරානය සටන් විරාමයට එකඟ වෙයි",
-            content="ඊශ්‍රායලය සටන් විරාමයට එකඟ වූ බව එරට අග්‍රාමාත්‍ය බෙන්ජමින් නෙතන්යාහු විසින් තහවුරු කර තිබේ ඒ එරට " \
-            "අග්‍රාමාත්‍ය කාර්යාලය හරහා නිවේදනයක් නිකුත් කරමින් මේ අතර ඉරාන රාජ්‍ය රූපවාහිනිය නිවේදනයක් නිකුත් කරමින් පැවසුවේ සටන් විරාමය ආරම්භ වී ඇති බවයි ඉරානය සහ ඊශ්‍රායලය අතර සටන් විරාමය  ක්‍රියාත්මක බව ඇමරිකානු ජනාධිපති ඩොනල්ඩ් ට්‍රම්ප් සිය" \
-            "සමාජ මාධ්‍යයෙහි සටහනක් තබමින් පවසා තිබූ පසුබමක ෙදෙරට එම සටන් විරාමයට එකඟතාවය පළ කර තිබේ",
-            timestamp=datetime(2025, 6, 8, 14, 30),
-            url="https://sinhala.newsfirst.lk/2025/06/24/",
-            source="NewsFirst Sri Lanka",
-        )
+    
+    # Here is an example array; in production, load from a file or database
+    sample_dataset = [
+        {
+            "headline": "ඊශ්‍රායලය සහ ඉරානය සටන් විරාමයට එකඟ වෙයි",
+            "content": "ඊශ්‍රායලය සටන් විරාමයට එකඟ වූ බව ...",
+            "timestamp": "2025-06-08T14:30:00",
+            "url": "https://sinhala.newsfirst.lk/2025/06/24/",
+            "source": "NewsFirst Sri Lanka",
+            "category": "PoliticsAndGovernance",
+            "subcategory": "InternationalPolitics",
+            "persons": ["අග්‍රාමාත්‍ය", "බෙන්ජමින්", "නෙතන්යාහු", "ජනාධිපති", "ඩොනල්ඩ්", "ට්‍රම්ප්"],
+            "locations": ["ඊශ්‍රායලය", "ඉරානය", "ඇමරිකා"],
+            "events": ["සටන් විරාමය"],
+            "organizations": ["කාර්යාලය"]
+        },
+        # add more sample dicts here...
+    ]
+    
+    for article_json in sample_dataset:
+        populate_article_from_json(article_json, manager)
 
-    )
     manager.save()
     print("Ontology updated & saved:", manager.path)
+    print("Sample dataset populated successfully.")
+    print("Sample dataset:", json.dumps(sample_dataset, ensure_ascii=False, indent=2))
+    print("Ontology path:", manager.path)
+    print("Ontology version:", manager.version)
+    print("Ontology last updated:", manager.last_updated)
+    print("Ontology size:", manager.size)
+    print("Ontology stats:", manager.stats)
+    print("Ontology categories:", manager.categories)
+    print("Ontology subcategories:", manager.subcategories)
+    print("Ontology persons:", manager.persons)
+    print("Ontology locations:", manager.locations)
+    print("Ontology events:", manager.events)
+    print("Ontology organizations:", manager.organizations)
+    print("Ontology articles:", manager.articles)   

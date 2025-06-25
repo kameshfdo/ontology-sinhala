@@ -6,11 +6,14 @@ ontology instance.
 The code is organised as small helpers so no single function
 turns back into an 800-line monster.
 """
+
+from datetime import datetime
+from dataclasses import dataclass
 from owlready2 import (
     Thing,
     DataProperty,
     ObjectProperty,
-    FunctionalProperty,
+    FunctionalProperty
 )
 
 # ───────────────────────────────────────────────────────────
@@ -77,9 +80,9 @@ def _article_data_props(onto):
     with onto:
         class hasTitle(DataProperty, FunctionalProperty):          range = [str]
         class hasFullText(DataProperty):                           range = [str]
-        class hasPublicationDate(DataProperty, FunctionalProperty):range = ["dateTime"]
+        class hasPublicationDate(DataProperty, FunctionalProperty):range = [datetime]
         class hasSourceURL(DataProperty, FunctionalProperty):      range = [str]
-        class processedDate(DataProperty, FunctionalProperty):     range = ["dateTime"]
+        class processedDate(DataProperty, FunctionalProperty):     range = [datetime]
         class publisherName(DataProperty):                         range = [str]
     return onto
 
