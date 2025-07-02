@@ -2,11 +2,12 @@ import json
 from ontology_sinhala.manager import OntologyManager
 from ontology_sinhala.ontology_populator import populate_article_from_json
 
-if __name__ == "__main__":
-    manager = OntologyManager()
+
+
     
-    # Here is an example array; in production, load from a file or database
-    sample_dataset = [
+#Here is an example array; in production, load from a file or database
+
+sample_dataset = [
         {
             "headline": "ඊශ්‍රායලය සහ ඉරානය සටන් විරාමයට එකඟ වෙයි",
             "content": "ඊශ්‍රායලය සටන් විරාමයට එකඟ වූ බව ...",
@@ -329,8 +330,8 @@ if __name__ == "__main__":
             "content": "“ද මෝනිං ෂෝ” සහ “සැන්ටා බාබරා” හි රංගනයෙන් දායක වූ අමෙරිකානු නළු ජෝ මැරිනෙලි මියගොස් තිබෙනවා. මියයන විට ඔහු 68 හැවිරිදි වියේ පසුවූවා. වසර කිහිපයක සිට උගුරේ සහ අමාශයේ වැළඳී තිබූ පිළිකා රෝගී තත්ත්වය නිසා ඔහු මියගොස් ඇති බවයි විදෙස් මාධ්‍ය වාර්තා කරන්නේ. මැරිනෙලි 1957 ජනවාරි 21 වන දින කනෙක්ටිකට් හි මෙරිඩන් හි උපත ලැබූ අතර වයස අවුරුදු 4 දී දකුණු කැලිෆෝනියාවට සංක්‍රමණය වී තිබෙනවා. පසුව ලොස් ඇන්ජලීස් හි ආර්කේඩියා උසස් පාසලට සහ නෙවාඩා හි රෙනෝ උසස් පාසලට ඇතුළත් වූ ඔහු ලන්ඩනයේ ලොයෝලා මේරිමවුන්ට් විශ්ව විද්‍යාලයෙන් සහ රාජකීය නාට්‍ය කලා ඇකඩමියෙන් (RADA) උසස් අධ්‍යාපනය ලබා තිබුණා. 1988-90 දක්වා බර්නාඩෝ \"බනී\" ටැග්ලියාටි ලෙස ඔහු රඟපෑමෙන් පසු, 1993 දී ගයිඩින් ලයිට් නාට්‍යයේ පෝලි හාර්ඩ්මන් චරිතයට රංගනයෙන් දායක වී තිබෙනවා. එමෙන්ම 1999-2001 දක්වා කාලයේ ජෙනරල් හොස්පිට්ල්හි ජෝසප් සොරෙල් නමැති චරිතය නිරූපණය කර ඇති බවයි මාධ්‍ය වාර්තා සඳහන් කරන්නේ. ඔහුගේ වෘත්තීය ජීවිතය පුරාම, ඔහු One Last Ride, Hunter, ER, The King of Queens, NYPD Blue, The West Wing, The Practice, House, Castle, Desperate Housewives, Parenthood, The Offer, Ray Donovan ඇතුළුව චිත්‍රපට සහ රූපවාහිනී නිර්මාණ 50කට අධික ප්‍රමාණයකට දායක වී තිබෙනවා.",
             "timestamp": "2025-06-26T09:36:50",
             "url": "https://hirunews.lk/408397/american-actor-joe-marinelli-passes-away",
-            "category": "Obituaries",
-            "subcategory": "ArtsAndCulture",
+            "category": "CultureAndEntertainment",
+            "subcategory": "MusicAndArts",
             "persons": [
                 "ජෝ මැරිනෙලි"
             ],
@@ -878,24 +879,8 @@ if __name__ == "__main__":
             ]
         }
 
-    ]
-    
-    for article_json in sample_dataset:
-        populate_article_from_json(article_json, manager)
-
-    manager.save()
-    print("Ontology updated & saved:", manager.path)
-    print("Sample dataset populated successfully.")
-    print("Sample dataset:", json.dumps(sample_dataset, ensure_ascii=False, indent=2))
-    print("Ontology path:", manager.path)
-    print("Ontology version:", manager.version)
-    print("Ontology last updated:", manager.last_updated)
-    print("Ontology size:", manager.size)
-    print("Ontology stats:", manager.stats)
-    print("Ontology categories:", manager.categories)
-    print("Ontology subcategories:", manager.subcategories)
-    print("Ontology persons:", manager.persons)
-    print("Ontology locations:", manager.locations)
-    print("Ontology events:", manager.events)
-    print("Ontology organizations:", manager.organizations)
-    print("Ontology articles:", manager.articles)   
+]
+manager = OntologyManager()
+for article_json in sample_dataset:
+    populate_article_from_json(article_json, manager)
+manager.save()

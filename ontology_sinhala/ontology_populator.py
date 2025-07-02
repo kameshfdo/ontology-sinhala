@@ -5,32 +5,66 @@ from .models import FormattedNewsArticle
 def populate_article_from_json(data, manager):
     onto = manager.ontology
 
+    from datetime import datetime
+
+    def parse_timestamp(ts_str):
+        try:
+            # Try native ISO format
+            return datetime.fromisoformat(ts_str)
+        except ValueError:
+            try:
+                return datetime.strptime(ts_str, "%Y-%m-%d %H:%M")
+            except ValueError:
+                raise ValueError(f"Unrecognized timestamp format: {ts_str}")
+
+
     # Add core article
     article_obj = FormattedNewsArticle(
         headline=data['headline'],
         content=data['content'],
-        timestamp=datetime.fromisoformat(data['timestamp']),
+        timestamp=parse_timestamp(data['timestamp']),
         url=data['url'],
         source=data['source'],
     )
     article_indiv = manager.add_article(article_obj)
     
     with onto:
-        cat_class = getattr(onto, data['category'])
-        subcat_class = getattr(onto, data['subcategory'])
-        cat_indiv = cat_class(f"cat_{data['category']}")
-        subcat_indiv = subcat_class(f"subcat_{data['subcategory']}")
-        article_indiv.hasCategory.append(cat_indiv)
-        article_indiv.hasCategory.append(subcat_indiv)
+        
+        cat_class = getattr(onto, data['category'], None)
+        print(f"[DEBUG] Category class for {data['category']}: {cat_class}")
+        if cat_class is None:
+            raise ValueError(f"[ERROR] Category '{data['category']}' not found in ontology.")
+
+        subcat_class = getattr(onto, data['subcategory'], None)
+        print(f"[DEBUG] Subcategory class for {data['subcategory']}: {subcat_class}")
+        if subcat_class is None:
+            raise ValueError(f"[ERROR] Subcategory '{data['subcategory']}' not found in ontology.")
+
+        
 
         def get_or_create(cls, name):
             safe_name = manager._safe_name(name)
-            if safe_name in onto:
-                return onto[safe_name]
-            else:
-                ind = cls(safe_name)
-                ind.canonicalName = name
-                return ind
+            print(f"[DEBUG] Safe name for {name}: {safe_name}")
+            existing = onto.search_one(iri="*" + safe_name)
+            if existing:
+                return existing
+            ind = cls(safe_name)
+            ind.canonicalName = name
+            return ind
+
+        def get_or_create_category(cls, name):
+            safe_name = f"{name}"
+            print(f"[DEBUG] Safe name for category {name}: {safe_name}")
+            existing = onto.search_one(iri="*" + safe_name)
+            if existing:
+                return existing
+            return cls(safe_name)
+
+
+        cat_indiv = get_or_create_category(cat_class, data['category'])
+        subcat_indiv = get_or_create_category(subcat_class, data['subcategory'])
+        article_indiv.hasCategory.append(cat_indiv)
+        article_indiv.hasCategory.append(subcat_indiv)
 
         person_inds = [get_or_create(onto.Person, n) for n in data.get('persons',[])]
         location_inds = [get_or_create(onto.Location, n) for n in data.get('locations',[])]
@@ -132,5 +166,7 @@ def populate_article_from_json(data, manager):
                     article_indiv.hasCourtCase.append(ev)
                 for loc in location_inds:
                     article_indiv.hasCourtLocation.append(loc)
+        else:
+            print(f"[DEBUG] Unhandled category/subcategory: {data['category']}/{data['subcategory']}")
 
     return article_indiv

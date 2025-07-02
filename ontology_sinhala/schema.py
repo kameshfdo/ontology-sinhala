@@ -23,7 +23,7 @@ from owlready2 import (
 def _core_classes(onto):
     with onto:
         class NewsArticle(Thing):          pass
-        class NewsCategory(Thing):         pass
+        class NewsCategory(Thing):        pass
         class NamedEntity(Thing):          pass
         class Statement(Thing):            pass
         class NewsVerb(Thing):             pass
@@ -106,8 +106,13 @@ def _statement_props(onto):
         class hasActionVerb(ObjectProperty, FunctionalProperty):
             range = [onto.NewsVerb]
         class hasCategory(ObjectProperty):
-            domain = [onto.NewsArticle]
             range  = [onto.NewsCategory]
+        class hasSubCategory(ObjectProperty):
+            range  = [onto.InternationalPolitics, onto.DomesticPolitics,
+                      onto.TechAndInnovation, onto.ResearchAndSpace,
+                      onto.ScreenAndStage, onto.MusicAndArts,
+                      onto.Cricket, onto.Football, onto.Other,
+                      onto.CrimeReport, onto.CourtsAndInvestigation]
         class mentionsEntity(ObjectProperty):    range = [onto.NamedEntity]
         class containsStatement(ObjectProperty): range = [onto.Statement]
 
@@ -219,19 +224,19 @@ def _sports_props(onto):
         class hasCricketTeam(ObjectProperty):           range = [onto.Organization]
         class hasCricketPlayer(ObjectProperty):         range = [onto.Person]
         class hasCricketVenue(ObjectProperty):            range = [onto.Location]
-        class hasCricketTournament(DataProperty):       range = [onto.Event]
+        class hasCricketTournament(ObjectProperty):       range = [onto.Event]
 
         # football
         class hasFootballTeam(ObjectProperty):           range = [onto.Organization]
         class hasFootballPlayer(ObjectProperty):         range = [onto.Person]
         class hasFootballVenue(ObjectProperty):            range = [onto.Location]
-        class hasFootballTournament(DataProperty):       range = [onto.Event]
+        class hasFootballTournament(ObjectProperty):       range = [onto.Event]
 
         # catch-all other sports
         class hasTeam(ObjectProperty):           range = [onto.Organization]
         class hasPlayer(ObjectProperty):         range = [onto.Person]
         class hasVenue(ObjectProperty):            range = [onto.Location]
-        class hasTournament(DataProperty):       range = [onto.Event]
+        class hasTournament(ObjectProperty):       range = [onto.Event]
     return onto
 
 
@@ -248,12 +253,12 @@ def _crime_props(onto):
         
 
         # crime report
-        class hasCrimeType(DataProperty):               range = [onto.Event]
+        class hasCrimeType(ObjectProperty):               range = [onto.Event]
         class hasCrimeLocation(ObjectProperty):         range = [onto.Location]
 
         # courts & investigation
-        class hasCourtCase(DataProperty):               range = [onto.Event]
-        class hasCourtLocation(DataProperty):            range = [onto.Location]
+        class hasCourtCase(ObjectProperty):               range = [onto.Event]
+        class hasCourtLocation(ObjectProperty):            range = [onto.Location]
     return onto
 
 

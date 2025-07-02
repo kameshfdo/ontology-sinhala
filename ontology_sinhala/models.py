@@ -9,3 +9,5 @@ class FormattedNewsArticle:
     timestamp: datetime
     url: str
     source: str
+
+
