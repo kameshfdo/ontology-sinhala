@@ -159,10 +159,7 @@ def _science_props(onto):
     with onto:
         # ── Tech & Innovation ──────────────────────────
         
-        # class hasTechnology(DataProperty):              range = [str]
-        # class hasInnovation(DataProperty):              range = [str]
-        # class hasTechImpact(DataProperty):              range = [str]
-        # class hasTechField(DataProperty):               range = [str]
+        
 
         class hasTechCompany(ObjectProperty):           range = [onto.Organization]
         class hasTechEvent(ObjectProperty):             range = [onto.Event]
@@ -175,7 +172,6 @@ def _science_props(onto):
         class hasResearchPerson(ObjectProperty):        range = [onto.Person]
         class hasResearchEvent(ObjectProperty):          range = [onto.Event]
         class hasResearchLocation(ObjectProperty):           range = [onto.Location]
-        # class hasResearchFunding(ObjectProperty):       range = [onto.Organization]
     return onto
 
 
@@ -185,13 +181,6 @@ def _science_props(onto):
 
 def _culture_props(onto):
     with onto:
-        # # generic
-        # class hasEventType(DataProperty):               range = [str]
-        # class hasArtform(DataProperty):                 range = [str]
-        # class hasVenue(DataProperty):                   range = [str]
-        # class hasAwards(DataProperty):                  range = [str]
-        # class mediaCoverage(DataProperty):              range = [str]
-        # class hasArtisticStyle(DataProperty):           range = [str]
 
         # screen & stage
         class hasFilmDirectorActor(ObjectProperty):          range = [onto.Person]
@@ -214,11 +203,6 @@ def _culture_props(onto):
 
 def _sports_props(onto):
     with onto:
-        # # generic
-        # class hasSportType(DataProperty):               range = [str]
-        # class hasSportEvent(DataProperty):              range = [str]
-        # class hasSportLocation(DataProperty):           range = [str]
-        # class hasEventDate(DataProperty):               range = ["dateTime"]
 
         # cricket
         class hasCricketTeam(ObjectProperty):           range = [onto.Organization]
