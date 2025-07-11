@@ -1,22 +1,15 @@
-from owlready2 import get_ontology, default_world
-
-# Load the ontology
-onto_path = "new-ontology-v1.owl"  # Update with actual path
-onto = get_ontology(f"file://{onto_path}").load()
-
-
 # Define SPARQL queries
 #-----------------------------------------cricket queries-----------------------------------------
 # Query to get cricket teams
 query1 = """
 PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
-SELECT ?teamName
+SELECT ?organizationName
 WHERE {
   ?article ns:hasCategory ?category .
   FILTER (?category = ns:Cricket) .
   ?article ns:hasCricketTeam ?team .
-  ?team ns:canonicalName ?teamName .
+  ?team ns:canonicalName ?organizationName .
 }
 """
 
@@ -24,24 +17,24 @@ WHERE {
 query2 = """
 PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
-SELECT ?playerName
+SELECT ?personName
 WHERE {
   ?article ns:hasCategory ?category 
   FILTER (?category = ns:Cricket)
   ?article ns:hasCricketPlayer ?player.
-  ?player ns:canonicalName ?playerName
+  ?player ns:canonicalName ?personName
 }
 """
 # Query to get cricket venues
 query3 = """
 PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
-SELECT ?venueName
+SELECT ?locationName
 WHERE {
   ?article ns:hasCategory ?category 
   FILTER (?category = ns:Cricket)
   ?article ns:hasCricketVenue ?venue.
-  ?venue ns:canonicalName ?venueName
+  ?venue ns:canonicalName ?locationName
 }
 """
 
@@ -49,12 +42,12 @@ WHERE {
 query4 = """
 PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
-SELECT ?tournamentName
+SELECT ?eventName
 WHERE {
   ?article ns:hasCategory ?category 
   FILTER (?category = ns:Cricket)
   ?article ns:hasCricketTournament ?tournement.
-  ?tournement ns:canonicalName ?tournamentName
+  ?tournement ns:canonicalName ?eventName
 }
 """
 #-----------------------------------------football queries-----------------------------------------
@@ -62,36 +55,36 @@ WHERE {
 query5 = """
 PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
-SELECT ?teamName
+SELECT ?organizationName
 WHERE {
   ?article ns:hasCategory ?category .
   FILTER (?category = ns:Football) .
   ?article ns:hasFootballTeam ?team .
-  ?team ns:canonicalName ?teamName .
+  ?team ns:canonicalName ?organizationName .
 }
 """
 # Query to get football players
 query6 = """
 PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
-SELECT ?playerName
+SELECT ?personName
 WHERE {
   ?article ns:hasCategory ?category 
   FILTER (?category = ns:Football)
   ?article ns:hasFootballPlayer ?player.
-  ?player ns:canonicalName ?playerName
+  ?player ns:canonicalName ?personName
 }
 """
 # Query to get football venues
 query7 = """
 PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
-SELECT ?venueName
+SELECT ?locationName
 WHERE {
   ?article ns:hasCategory ?category 
   FILTER (?category = ns:Cricket)
   ?article ns:hasCricketVenue ?venue.
-  ?venue ns:canonicalName ?venueName
+  ?venue ns:canonicalName ?locationName
 }
 """
 
@@ -99,12 +92,12 @@ WHERE {
 query8 = """
 PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
-SELECT ?tournamentName
+SELECT ?eventName
 WHERE {
   ?article ns:hasCategory ?category 
   FILTER (?category = ns:Football)
   ?article ns:hasFootballTournament ?tournement.
-  ?tournement ns:canonicalName ?tournamentName
+  ?tournement ns:canonicalName ?eventName
 }
 """
 
@@ -113,12 +106,12 @@ WHERE {
 query9 = """
 PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
-SELECT ?teamName
+SELECT ?organizationName
 WHERE {
   ?article ns:hasCategory ?category .
   FILTER (?category = ns:Other) .
   ?article ns:hasTeam ?team .
-  ?team ns:canonicalName ?teamName .
+  ?team ns:canonicalName ?organizationName .
 }
 """
 
@@ -126,36 +119,36 @@ WHERE {
 query10 = """
 PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
-SELECT ?playerName
+SELECT ?personName
 WHERE {
   ?article ns:hasCategory ?category 
   FILTER (?category = ns:Other)
   ?article ns:hasPlayer ?player.
-  ?player ns:canonicalName ?playerName
+  ?player ns:canonicalName ?personName
 }
 """
 
 query11 = """
 PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
-SELECT ?venueName
+SELECT ?locationName
 WHERE {
   ?article ns:hasCategory ?category 
   FILTER (?category = ns:Other)
   ?article ns:hasVenue ?venue.
-  ?venue ns:canonicalName ?venueName
+  ?venue ns:canonicalName ?locationName
 }
 """
 
 query12 = """
 PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
-SELECT ?tournamentName
+SELECT ?eventName
 WHERE {
   ?article ns:hasCategory ?category 
   FILTER (?category = ns:Other)
   ?article ns:hasTournament ?tournement.
-  ?tournement ns:canonicalName ?tournamentName
+  ?tournement ns:canonicalName ?eventName
 }
 """
 
@@ -535,24 +528,3 @@ WHERE {
 }
 """
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-results = list(default_world.sparql(query1))
-
-# Print results
-for team in results:
-    print(f"Teams: {team}")
