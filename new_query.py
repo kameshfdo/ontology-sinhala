@@ -123,7 +123,7 @@ WHERE {
 """
 
 
-query9 = """
+query10 = """
 PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
 SELECT ?playerName
@@ -135,89 +135,405 @@ WHERE {
 }
 """
 
-query9 = """
+query11 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?venueName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:Other)
+  ?article ns:hasVenue ?venue.
+  ?venue ns:canonicalName ?venueName
+}
 """
 
-query9 = """
+query12 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?tournamentName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:Other)
+  ?article ns:hasTournament ?tournement.
+  ?tournement ns:canonicalName ?tournamentName
+}
 """
 
-query9 = """
+#------------------------------------------International Politics queries-----------------------------------------
+query13 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?organizationName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:InternationalPolitics)
+  ?article ns:hasForeignOrganization ?org.
+  ?org ns:canonicalName ?organizationName
+}
 """
 
-query9 = """
+query14 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?eventName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:InternationalPolitics)
+  ?article ns:hasForeignEvent ?evt.
+  ?evt ns:canonicalName ?eventName
+}
 """
 
-query9 = """
+query15 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?personName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:InternationalPolitics)
+  ?article ns:hasForeignPerson ?per.
+  ?per ns:canonicalName ?personName
+}
 """
 
-query9 = """
+query16 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?locationName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:InternationalPolitics)
+  ?article ns:hasForeignLocation ?loc.
+  ?loc ns:canonicalName ?locationName
+}
 """
 
-query9 = """
+#------------------------------------------Domestic Politics queries-----------------------------------------
 
+query17 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+
+SELECT ?organizationName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:DomesticPolitics)
+  ?article ns:hasDomesticOrganization ?org.
+  ?org ns:canonicalName ?organizationName
+}
 """
 
-query9 = """
+query18 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?eventName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:DomesticPolitics)
+  ?article ns:hasDomesticEvent ?evt.
+  ?evt ns:canonicalName ?eventName
+}
 """
 
-query9 = """
+query19 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?personName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:DomesticPolitics)
+  ?article ns:hasDomesticPerson ?per.
+  ?per ns:canonicalName ?personName
+}
 """
 
-query9 = """
+query20 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?locationName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:DomesticPolitics)
+  ?article ns:hasDomesticLocation ?loc.
+  ?loc ns:canonicalName ?locationName
+}
+"""
+#------------------------------------------Tech And Innovation queries-----------------------------------------
+
+query21 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+
+SELECT ?organizationName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:TechAndInnovation)
+  ?article ns:hasTechCompany ?org.
+  ?org ns:canonicalName ?organizationName
+}
 """
 
-query9 = """
+query22 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?eventName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:TechAndInnovation)
+  ?article ns:hasTechEvent ?evt.
+  ?evt ns:canonicalName ?eventName
+}
 """
 
-query9 = """
+query23 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?personName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:TechAndInnovation)
+  ?article ns:hasTechPerson ?per.
+  ?per ns:canonicalName ?personName
+}
 """
 
-query9 = """
+query24 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?locationName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:TechAndInnovation)
+  ?article ns:hasTechLocation ?loc.
+  ?loc ns:canonicalName ?locationName
+}
 """
 
-query9 = """
+#------------------------------------------Research & Space queries-----------------------------------------
 
+query25 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+
+SELECT ?organizationName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:ResearchAndSpace)
+  ?article ns:hasResearchInstitution ?org.
+  ?org ns:canonicalName ?organizationName
+}
 """
 
-query9 = """
+query26 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?eventName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:ResearchAndSpace)
+  ?article ns:hasResearchEvent ?evt.
+  ?evt ns:canonicalName ?eventName
+}
 """
 
-query9 = """
+query27 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?personName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:ResearchAndSpace)
+  ?article ns:hasResearchPerson ?per.
+  ?per ns:canonicalName ?personName
+}
 """
 
-query9 = """
+query28 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?locationName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:ResearchAndSpace)
+  ?article ns:hasResearchLocation ?loc.
+  ?loc ns:canonicalName ?locationName
+}
+"""
+#------------------------------------------ screen & stage queries-----------------------------------------
+
+query29 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+
+SELECT ?organizationName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:ScreenAndStage)
+  ?article ns:hasFilmProductionCompany ?org.
+  ?org ns:canonicalName ?organizationName
+}
 """
 
-query9 = """
+query30 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?eventName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:ScreenAndStage)
+  ?article ns:hasStageEvent ?evt.
+  ?evt ns:canonicalName ?eventName
+}
 """
 
-query9 = """
+query31 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?personName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:ScreenAndStage)
+  ?article ns:hasFilmDirectorActor ?per.
+  ?per ns:canonicalName ?personName
+}
+"""
+
+query32 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+
+SELECT ?locationName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:ScreenAndStage)
+  ?article ns:hasFilmLocation ?loc.
+  ?loc ns:canonicalName ?locationName
+}
+"""
+
+#------------------------------------------ music & arts queries-----------------------------------------
+
+query33 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+
+SELECT ?organizationName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:MusicAndArts)
+  ?article ns:hasMusicCompany ?org.
+  ?org ns:canonicalName ?organizationName
+}
+"""
+
+query34 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+
+SELECT ?eventName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:MusicAndArts)
+  ?article ns:hasMusicEvent ?evt.
+  ?evt ns:canonicalName ?eventName
+}
+"""
+
+query35 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+
+SELECT ?personName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:MusicAndArts)
+  ?article ns:hasMusicArtist ?per.
+  ?per ns:canonicalName ?personName
+}
+"""
+
+query36 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+
+SELECT ?locationName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:MusicAndArts)
+  ?article ns:hasMusicLocation ?loc.
+  ?loc ns:canonicalName ?locationName
+}
+"""
+
+#-------------------------------------------Crime & Justice queries(common for both sub category)-----------------------------------------
+
+query37 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+
+SELECT ?organizationName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:CrimeAndJustice)
+  ?article ns:hasInvestigation ?org.
+  ?org ns:canonicalName ?organizationName
+}
+"""
+
+query38 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+
+SELECT ?personName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:CrimeAndJustice)
+  ?article ns:hasWitness ?per.
+  ?per ns:canonicalName ?personName
+}
+"""
+
+#-------------------------------------------crime report queries-----------------------------------------
+
+query39 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+
+SELECT ?eventName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:CrimeReport)
+  ?article ns:hasCrimeType ?evt.
+  ?evt ns:canonicalName ?eventName
+}
+"""
+
+query40 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+
+SELECT ?locationName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:CrimeReport)
+  ?article ns:hasCrimeLocation ?loc.
+  ?loc ns:canonicalName ?locationName
+}
 """
 
 
+#-------------------------------------------courts & investigation queries-----------------------------------------
 
+query41 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
+SELECT ?eventName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:CourtsAndInvestigation)
+  ?article ns:hasCourtCase ?evt.
+  ?evt ns:canonicalName ?eventName
+}
+"""
 
+query42 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
-
-
+SELECT ?locationName
+WHERE {
+  ?article ns:hasCategory ?category 
+  FILTER (?category = ns:CourtsAndInvestigation)
+  ?article ns:hasCourtLocation ?loc.
+  ?loc ns:canonicalName ?locationName
+}
+"""
 
 
 

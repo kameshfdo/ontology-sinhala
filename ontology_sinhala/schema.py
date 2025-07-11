@@ -132,22 +132,17 @@ def _statement_props(onto):
 
 def _politics_props(onto):
     with onto:
-
-        class hasPositionOfRole(ObjectProperty):
-            domain = [onto.NewsArticle]
-            range  = [onto.Person]
-            
         # ── international ──────────────────────────
-        class hasForeignCountry(ObjectProperty):
-            domain = [onto.NewsArticle]
-            range  = [onto.Location]  # foreign country as location
+        class hasForeignOrganization(ObjectProperty):           range = [onto.Organization]
+        class hasForeignEvent(ObjectProperty):             range = [onto.Event]
+        class hasForeignPerson(ObjectProperty):            range = [onto.Person]
+        class hasForeignLocation(ObjectProperty):           range = [onto.Location]
 
-        
-        
         # ── domestic ──────────────────────────
-        class hasSrilanka(ObjectProperty):                # literal text
-            domain = [onto.NewsArticle]
-            range  = [onto.Location]  # Sri Lanka as location
+        class hasDomesticOrganization(ObjectProperty):           range = [onto.Organization]
+        class hasDomesticEvent(ObjectProperty):             range = [onto.Event]
+        class hasDomesticPerson(ObjectProperty):            range = [onto.Person]
+        class hasDomesticLocation(ObjectProperty):           range = [onto.Location]
     return onto
 
 
@@ -158,16 +153,12 @@ def _politics_props(onto):
 def _science_props(onto):
     with onto:
         # ── Tech & Innovation ──────────────────────────
-        
-        
-
         class hasTechCompany(ObjectProperty):           range = [onto.Organization]
         class hasTechEvent(ObjectProperty):             range = [onto.Event]
         class hasTechPerson(ObjectProperty):            range = [onto.Person]
-        class hasResearchLocation(ObjectProperty):           range = [onto.Location]
+        class hasTechLocation(ObjectProperty):           range = [onto.Location]
 
-        # ── Research & Space ───────────────────────────
-        
+        # ── Research & Space ───────────────────────────         
         class hasResearchInstitution(ObjectProperty):   range = [onto.Organization]
         class hasResearchPerson(ObjectProperty):        range = [onto.Person]
         class hasResearchEvent(ObjectProperty):          range = [onto.Event]
@@ -181,13 +172,11 @@ def _science_props(onto):
 
 def _culture_props(onto):
     with onto:
-
         # screen & stage
         class hasFilmDirectorActor(ObjectProperty):          range = [onto.Person]
         class hasFilmProductionCompany(ObjectProperty): range = [onto.Organization]
-        class hasResearchEvent(ObjectProperty):          range = [onto.Event]
-        class hasResearchLocation(ObjectProperty):           range = [onto.Location]
-
+        class hasStageEvent(ObjectProperty):          range = [onto.Event]
+        class hasFilmLocation(ObjectProperty):           range = [onto.Location]
 
         # music & arts
         class hasMusicArtist(ObjectProperty):           range = [onto.Person]
@@ -203,7 +192,6 @@ def _culture_props(onto):
 
 def _sports_props(onto):
     with onto:
-
         # cricket
         class hasCricketTeam(ObjectProperty):           range = [onto.Organization]
         class hasCricketPlayer(ObjectProperty):         range = [onto.Person]
