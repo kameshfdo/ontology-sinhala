@@ -528,3 +528,21 @@ WHERE {
 }
 """
 
+query43="""
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+
+SELECT ?publisher
+WHERE {
+  ?article ns:publisherName ?publisher 
+  
+}
+"""
+
+query44 = """
+PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+
+SELECT DISTINCT ?trustSementics
+WHERE {
+  ?article ns:hasFullText ?trustSementics .
+}
+"""
