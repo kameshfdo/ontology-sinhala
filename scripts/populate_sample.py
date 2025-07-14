@@ -2,11 +2,7 @@ import json
 from ontology_sinhala.manager import OntologyManager
 from ontology_sinhala.ontology_populator import populate_article_from_json
 
-
-
-    
 #Here is an example array; in production, load from a file or database
-
 sample_dataset = [
         {
             "headline": "ඊශ්‍රායලය සහ ඉරානය සටන් විරාමයට එකඟ වෙයි",
