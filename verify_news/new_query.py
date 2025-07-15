@@ -50,7 +50,12 @@ query4 = """
 PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
 
 SELECT ?eventName
+WHERE {PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+
+SELECT DISTINCT ?trustSementics
 WHERE {
+  ?article ns:hasFullText ?trustSementics .
+}
   ?article ns:hasCategory ?category 
   FILTER (?category = ns:Cricket)
   ?article ns:hasCricketTournament ?tournement.

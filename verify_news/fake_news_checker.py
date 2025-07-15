@@ -26,19 +26,34 @@ def get_source_credibility(news_publisher, trusted_publishers):
     return 1.0 if news_publisher in trusted_publishers else 0.0
 
 
-def get_all_trusted_contents():
-    sparql = """
+# def get_all_trusted_contents():
+#     sparql = """
+#     PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
+#     SELECT DISTINCT ?trustSementics
+#     WHERE {
+#       ?article ns:hasFullText ?trustSementics .
+#     }
+#     """
+#     results = list(default_world.sparql(sparql))
+#     return [str(r[0]) for r in results]
+
+def get_trusted_contents_by_category(category):
+    # Make sure category is the exact string after 'ns:', e.g., 'Cricket'
+    category_uri = f"ns:{category}"
+
+    sparql = f"""
     PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
     SELECT DISTINCT ?trustSementics
-    WHERE {
+    WHERE {{
+      ?article ns:hasCategory ?cat .
+      FILTER (?cat = {category_uri})
       ?article ns:hasFullText ?trustSementics .
-    }
+    }}
     """
     results = list(default_world.sparql(sparql))
     return [str(r[0]) for r in results]
 
-
-def get_semantic_similarity_score(news_text, trusted_texts, api_url="https://6ea85e2e49f0.ngrok-free.app/similarity"):
+def get_semantic_similarity_score(news_text, trusted_texts, api_url="https://5f563af82bb5.ngrok-free.app/similarity"):
     payload = {
         "news_text": news_text,
         "trusted_texts": trusted_texts
@@ -107,7 +122,7 @@ def check_fake(news_json, ontology_path="new-ontology-v1.owl", debug=True):
         print(f"  Overall entity similarity score: {entity_similarity_score:.3f}")
     
     # --- Semantic Similarity ---
-    trusted_texts = get_all_trusted_contents()
+    trusted_texts = get_trusted_contents_by_category(subcat)
     content = news_json.get("content", "")
     semantic_similarity_score = get_semantic_similarity_score(content, trusted_texts)
     if debug:
