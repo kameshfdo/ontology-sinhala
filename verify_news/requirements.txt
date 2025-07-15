@@ -1,3 +1,0 @@
-Owlready2
-requests
-SPARQLWrapper
