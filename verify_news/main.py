@@ -9,6 +9,7 @@ import requests
 from .querymapping import QUERY_MAP
 from .query import query43, query44
 
+
 # --- FastAPI setup
 app = FastAPI()
 
