@@ -13,8 +13,13 @@ from .query import query43, query44
 # --- FastAPI setup
 app = FastAPI()
 
+class TrustedContent(BaseModel):
+    trustSementics: str
+    title: str
+    url: str
+
 # --- News input model
-class NewsInput(BaseModel):
+class News(BaseModel):
     headline: str
     content: str
     timestamp: str
@@ -26,6 +31,13 @@ class NewsInput(BaseModel):
     locations: List[str] = []
     events: List[str] = []
     organizations: List[str] = []
+
+class News(BaseModel):
+    headline: str
+    content: str
+    timestamp: str
+    url: str
+    source: str
 
 # --- Helper Functions (copied from your script) ---
 def get_verified_values(sparql_query):
@@ -50,17 +62,23 @@ def get_trusted_contents_by_category(category):
     category_uri = f"ns:{category}"
     sparql = f"""
     PREFIX ns: <http://www.semanticweb.org/kameshfdo/ontologies/2025/5/new-ontology-v1#>
-    SELECT DISTINCT ?trustSementics
+    SELECT DISTINCT ?trustSementics ?title ?url
     WHERE {{
       ?article ns:hasCategory ?cat .
       FILTER (?cat = {category_uri})
       ?article ns:hasFullText ?trustSementics .
+      ?article ns:hasTitle ?title .
+      ?article ns:hasSourceURL ?url .
     }}
     """
     results = list(default_world.sparql(sparql))
-    return [str(r[0]) for r in results]
+    return [TrustedContent(
+        trustSementics=str(r[0]),
+        title=str(r[1]),
+        url=str(r[2])
+    ) for r in results]
 
-def get_semantic_similarity_score(news_text, trusted_texts, api_url="https://5f563af82bb5.ngrok-free.app/similarity"):
+def get_semantic_similarity_score(news_text, trusted_texts, api_url="https://relaxing-morally-wallaby.ngrok-free.app/similarity"):
     payload = {
         "news_text": news_text,
         "trusted_texts": trusted_texts
@@ -73,6 +91,45 @@ def get_semantic_similarity_score(news_text, trusted_texts, api_url="https://5f5
     except Exception as e:
         print(f"[Error] Could not get similarity from API: {e}")
         return 0.0
+    
+def get_news_or_not(news_text,api_url="https://relaxing-morally-wallaby.ngrok-free.app/check_news"):
+    payload = {
+        "text": news_text
+    }
+    try:
+        response = requests.post(api_url, json=payload, timeout=30)
+        response.raise_for_status()
+        result = response.json()
+        return result.get("checking", "")
+    except Exception as e:
+        print(f"[Error] Could not get news or not from API: {e}")
+        return False
+    
+def get_category_subcategory(news_text, api_url="https://relaxing-morally-wallaby.ngrok-free.app/check_category"): 
+    payload = {
+        "text": news_text
+    }
+    try:
+        response = requests.post(api_url, json=payload, timeout=30)
+        response.raise_for_status()
+        result = response.json()
+        return result.get("category", ""), result.get("subcategory", "")
+    except Exception as e:
+        print(f"[Error] Could not get category and subcategory from API: {e}")
+        return "", ""
+    
+def get_entities(news_text, api_url="https://ner-server-v2.onrender.com/ner"):
+    payload = {
+        "text": news_text
+    }
+    try:
+        response = requests.post(api_url, json=payload, timeout=30)
+        response.raise_for_status()
+        result = response.json()
+        return result.get("persons", []), result.get("locations", []), result.get("events", []), result.get("organizations", [])
+    except Exception as e:
+        print(f"[Error] Could not get entities from API: {e}")
+        return [], [], [], []
 
 def get_average_similarity(input_list, verified_list, debug_label=None):
     if not input_list:
@@ -97,7 +154,6 @@ def load_ontology():
     global onto
     onto = get_ontology("file://new-ontology-v1.owl").load()
 
-# --- Main checking logic, adapted for FastAPI usage ---
 def check_fake(news_json, debug=False):
     subcat = news_json.get('subcategory')
     entity_types = ['persons', 'locations', 'events', 'organizations']
@@ -121,9 +177,24 @@ def check_fake(news_json, debug=False):
 
     entity_similarity_score = weighted_sum / total_weight if total_weight > 0 else 0.0
 
-    trusted_texts = get_trusted_contents_by_category(subcat)
+    # --- Semantic Similarity Ranking ---
+    trusted_cont = get_trusted_contents_by_category(subcat)
     content = news_json.get("content", "")
-    semantic_similarity_score = get_semantic_similarity_score(content, trusted_texts)
+    similarity_results = []
+    for t in trusted_cont:
+        score = get_semantic_similarity_score(content, [t.trustSementics])  # Send [t], not t!
+        similarity_results.append({
+            "title": t.title,
+            "url": t.url,
+            "trustSementics": t.trustSementics,
+            "score": score
+        })
+    similarity_results.sort(key=lambda x: x["score"], reverse=True)
+    for idx, item in enumerate(similarity_results, 1):
+        item["rank"] = idx
+
+    max_semantic_similarity_score = similarity_results[0]["score"] if similarity_results else 0.0
+    semantic_similarity_score = sum(x["score"] for x in similarity_results) / len(similarity_results) if similarity_results else 0.0
 
     trusted_publishers = get_trusted_publishers()
     publisher = news_json.get("source", "")
@@ -131,11 +202,10 @@ def check_fake(news_json, debug=False):
 
     final_score = (
         0.4 * entity_similarity_score +
-        0.3 * semantic_similarity_score +
+        0.3 * max_semantic_similarity_score +
         0.3 * source_credibility_score
     )
 
-    # Result label based on your new rules
     if final_score >= 0.7:
         result = "NOT FAKE ✅"
     elif final_score >= 0.4:
@@ -148,16 +218,44 @@ def check_fake(news_json, debug=False):
         "result": result,
         "breakdown": {
             "entity_similarity": entity_similarity_score,
-            "semantic_similarity": semantic_similarity_score,
+            "semantic_similarity": max_semantic_similarity_score,
             "source_credibility": source_credibility_score,
-            "per_entity": avg_scores
-        }
+            "per_entity": avg_scores,
+        },
+        "semantic_ranking": similarity_results,
     }
+
 
 # --- FastAPI POST endpoint ---
 @app.post("/check_fake")
-def check_news(news: NewsInput, debug: Optional[bool] = Query(False)):
-    # Convert model to dict
+def check_news(news: News, debug: Optional[bool] = Query(False)):
+    # check News validity
+    if not news.headline or not news.content or not news.timestamp or not news.url or not news.source:
+        return {"error": "Invalid news data. Please provide all required fields."}
+    # check if the news is actually news
+    is_news = get_news_or_not(news.content)
+    print(f"[DEBUG] is_news: {is_news}")
+    if is_news != 'news':
+        result = "The provided content is not recognized as news."
+        return {"error": "The provided content is not recognized as news.", "content": news.dict(), "result": is_news}
+    
+    # Get category and subcategory
+    category, subcategory = get_category_subcategory(news.content)
+    if not category or not subcategory:
+        return {"error": "Could not determine category or subcategory for the news.", "content": news.dict()}
+    
+    # Update news_json with category and subcategory
     news_json = news.dict()
+    news_json['category'] = category
+    news_json['subcategory'] = subcategory
+
+    # Get entities
+    persons, locations, events, organizations = get_entities(news.content)
+    news_json['persons'] = persons
+    news_json['locations'] = locations
+    news_json['events'] = events
+    news_json['organizations'] = organizations
+
+    # Check for fake news
     result = check_fake(news_json, debug=debug)
     return result

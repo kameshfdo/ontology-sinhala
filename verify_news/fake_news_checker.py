@@ -53,7 +53,7 @@ def get_trusted_contents_by_category(category):
     results = list(default_world.sparql(sparql))
     return [str(r[0]) for r in results]
 
-def get_semantic_similarity_score(news_text, trusted_texts, api_url="https://5f563af82bb5.ngrok-free.app/similarity"):
+def get_semantic_similarity_score(news_text, trusted_texts, api_url="https://neat-eagerly-tiger.ngrok-free.app/similarity"):
     payload = {
         "news_text": news_text,
         "trusted_texts": trusted_texts
@@ -124,11 +124,34 @@ def check_fake(news_json, ontology_path="new-ontology-v1.owl", debug=True):
     # --- Semantic Similarity ---
     trusted_texts = get_trusted_contents_by_category(subcat)
     content = news_json.get("content", "")
-    semantic_similarity_score = get_semantic_similarity_score(content, trusted_texts)
+    
+    # Compute similarity for each trusted_text
+    similarity_results = []
+    for t in trusted_texts:
+        score = get_semantic_similarity_score(content, [t])
+        similarity_results.append({
+            "trusted_text": t,
+            "score": score
+        })
+
+    # Sort by score descending
+    similarity_results.sort(key=lambda x: x["score"], reverse=True)
+
+    # Assign ranks
+    for idx, item in enumerate(similarity_results, 1):
+        item["rank"] = idx
+
+    # Get the highest score and trusted_text
+    max_semantic_similarity_score = similarity_results[0]["score"] if similarity_results else 0.0
+    semantic_similarity_score = sum(x["score"] for x in similarity_results) / len(similarity_results) if similarity_results else 0.0
+
     if debug:
         print(f"\n[Semantic Similarity] Content: {content!r}")
-        print(f"  Trusted texts: {trusted_texts[:3]}... (total {len(trusted_texts)})")
-        print(f"  Semantic similarity score: {semantic_similarity_score:.3f}")
+        print(f"  Top trusted texts by similarity:")
+        for item in similarity_results[:3]:  # Show top 3
+            print(f"    Rank {item['rank']}: Score={item['score']:.3f}, Text={item['trusted_text'][:60]}...")
+        print(f"  Max semantic similarity score: {max_semantic_similarity_score:.3f}")
+        print(f"  Average semantic similarity score: {semantic_similarity_score:.3f}")
 
     # --- Source Credibility ---
     trusted_publishers = get_trusted_publishers()
@@ -140,20 +163,23 @@ def check_fake(news_json, ontology_path="new-ontology-v1.owl", debug=True):
         print(f"  Trusted publishers: {trusted_publishers[:3]}... (total {len(trusted_publishers)})")
         print(f"  Source credibility score: {source_credibility_score:.3f}")
 
-
     # --- Composite Score (weights can be tuned, e.g. 0.4/0.3/0.3) ---
     final_score = (
         0.4 * entity_similarity_score +
-        0.3 * semantic_similarity_score +
+        0.3 * max_semantic_similarity_score +
         0.3 * source_credibility_score
     )
 
+    # Optionally return the full similarity ranking for inspection
     return final_score, {
         "entity_similarity": entity_similarity_score,
         "semantic_similarity": semantic_similarity_score,
+        "max_semantic_similarity": max_semantic_similarity_score,
         "source_credibility": source_credibility_score,
-        "per_entity": avg_scores
+        "per_entity": avg_scores,
+        "semantic_ranking": similarity_results  # add this for full ranked list
     }, debug_outputs
+
 
 
 # 4. Usage Example
