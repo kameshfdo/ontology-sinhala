@@ -20,10 +20,10 @@ class TrustedContent(BaseModel):
 
 # --- News input model
 class News(BaseModel):
-    headline: str
+    # headline: str
     content: str
-    timestamp: str
-    url: str
+    # timestamp: str
+    # url: str
     source: str
     category: str
     subcategory: str
@@ -33,11 +33,11 @@ class News(BaseModel):
     organizations: List[str] = []
 
 class News(BaseModel):
-    headline: str
+    #headline: str
     content: str
-    timestamp: str
-    url: str
-    source: str
+    #timestamp: str
+    #url: str
+    #source: str
 
 # --- Helper Functions (copied from your script) ---
 def get_verified_values(sparql_query):
@@ -230,7 +230,7 @@ def check_fake(news_json, debug=False):
 @app.post("/check_fake")
 def check_news(news: News, debug: Optional[bool] = Query(False)):
     # check News validity
-    if not news.headline or not news.content or not news.timestamp or not news.url or not news.source:
+    if not news.content:
         return {"error": "Invalid news data. Please provide all required fields."}
     # check if the news is actually news
     is_news = get_news_or_not(news.content)
